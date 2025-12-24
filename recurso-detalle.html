@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Recurso - ISC-Hub</title>
+    <meta name="description" content="Visualiza y descarga recursos educativos de ISC">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <style>
+        .resource-detail-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-3xl) 0;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .resource-preview {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .resource-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .info-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .info-value {
+            font-size: var(--font-size-base);
+            color: var(--text-primary);
+        }
+
+        .comment-item {
+            padding: var(--spacing-lg);
+            border-bottom: var(--border-width) solid var(--border-light);
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .comment-author {
+            font-weight: var(--font-weight-semibold);
+            color: var(--primary-color);
+        }
+
+        .comment-date {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <div id="header"></div>
+
+        <!-- Resource Header -->
+        <div class="resource-detail-header">
+            <div class="container">
+                <a href="recursos.html"
+                    style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: var(--spacing-xs); margin-bottom: var(--spacing-lg);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Volver a recursos
+                </a>
+                <h1 id="resourceTitle" style="font-size: var(--font-size-4xl); margin-bottom: var(--spacing-md);">
+                    Cargando...
+                </h1>
+                <p id="resourceDescription" style="font-size: var(--font-size-lg); opacity: 0.9; max-width: 800px;">
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="layout-with-sidebar">
+                    <!-- Main Content -->
+                    <div>
+                        <!-- Preview Section -->
+                        <div class="card" style="margin-bottom: var(--spacing-2xl);">
+                            <h2 style="margin-bottom: var(--spacing-lg);">Vista Previa</h2>
+                            <div class="resource-preview" id="resourcePreview">
+                                <div style="text-align: center; color: var(--text-muted);">
+                                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1" style="margin-bottom: var(--spacing-md);">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <p>La vista previa se cargará aquí</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--spacing-md); justify-content: center;">
+                                <button class="btn btn-primary btn-lg" id="downloadBtn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" style="margin-right: var(--spacing-sm);">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Descargar
+                                </button>
+                                <button class="btn btn-outline" id="shareBtn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" style="margin-right: var(--spacing-sm);">
+                                        <circle cx="18" cy="5" r="3"></circle>
+                                        <circle cx="6" cy="12" r="3"></circle>
+                                        <circle cx="18" cy="19" r="3"></circle>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                    </svg>
+                                    Compartir
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <div class="card">
+                            <h2 style="margin-bottom: var(--spacing-lg);">Comentarios</h2>
+
+                            <!-- Add Comment Form -->
+                            <div style="margin-bottom: var(--spacing-2xl);">
+                                <textarea id="commentText" rows="3" placeholder="Escribe un comentario..."
+                                    style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md); resize: vertical; margin-bottom: var(--spacing-md);"></textarea>
+                                <button class="btn btn-primary" id="addCommentBtn">
+                                    Publicar Comentario
+                                </button>
+                            </div>
+
+                            <!-- Comments List -->
+                            <div id="commentsList">
+                                <!-- Sample comments -->
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="comment-author">Juan Pérez</span>
+                                        <span class="comment-date">Hace 2 días</span>
+                                    </div>
+                                    <p>Excelente recurso, me ayudó mucho para el examen. ¡Gracias por compartir!</p>
+                                </div>
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="comment-author">María González</span>
+                                        <span class="comment-date">Hace 5 días</span>
+                                    </div>
+                                    <p>Muy completo y bien explicado. Recomendado 100%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <!-- Resource Info -->
+                        <div class="card" style="margin-bottom: var(--spacing-lg);">
+                            <h3 style="margin-bottom: var(--spacing-lg);">Información</h3>
+                            <div class="resource-info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-item">
+                                    <span class="info-label">Materia</span>
+                                    <span class="info-value" id="infoMateria">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Tipo</span>
+                                    <span class="info-value" id="infoTipo">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Semestre</span>
+                                    <span class="info-value" id="infoSemestre">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Autor</span>
+                                    <span class="info-value" id="infoAutor">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Fecha</span>
+                                    <span class="info-value" id="infoFecha">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="card" style="margin-bottom: var(--spacing-lg);">
+                            <h3 style="margin-bottom: var(--spacing-lg);">Estadísticas</h3>
+                            <div class="resource-info-grid" style="grid-template-columns: 1fr;">
+                                <div class="info-item">
+                                    <span class="info-label">Descargas</span>
+                                    <span class="info-value" id="statsDescargas">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Calificación</span>
+                                    <div id="statsRating"
+                                        style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                                        <span style="color: #ffc107;">⭐⭐⭐⭐⭐</span>
+                                        <span style="color: var(--text-secondary);">(0)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating -->
+                        <div class="card">
+                            <h3 style="margin-bottom: var(--spacing-md);">Califica este recurso</h3>
+                            <div
+                                style="display: flex; gap: var(--spacing-xs); font-size: 32px; margin-bottom: var(--spacing-md);">
+                                <span class="star-rating" data-rating="1"
+                                    style="cursor: pointer; color: var(--border-color);">★</span>
+                                <span class="star-rating" data-rating="2"
+                                    style="cursor: pointer; color: var(--border-color);">★</span>
+                                <span class="star-rating" data-rating="3"
+                                    style="cursor: pointer; color: var(--border-color);">★</span>
+                                <span class="star-rating" data-rating="4"
+                                    style="cursor: pointer; color: var(--border-color);">★</span>
+                                <span class="star-rating" data-rating="5"
+                                    style="cursor: pointer; color: var(--border-color);">★</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" style="width: 100%;" id="submitRatingBtn">
+                                Enviar Calificación
+                            </button>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="card" style="margin-top: var(--spacing-lg);">
+                            <h3 style="margin-bottom: var(--spacing-md);">Etiquetas</h3>
+                            <div id="tagsList" style="display: flex; flex-wrap: wrap; gap: var(--spacing-xs);">
+                                <!-- Tags will be loaded here -->
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/components/header-loader.js"></script>
+    <script>
+        // Get resource ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const resourceId = urlParams.get('id');
+
+        // Sample resource data (will be replaced with Firebase)
+        const sampleResource = {
+            id: resourceId || '1',
+            titulo: 'Apuntes de Programación Web',
+            descripcion: 'Apuntes completos del curso de Programación Web incluyendo HTML, CSS, JavaScript y frameworks modernos.',
+            materia: 'Programación',
+            tipoContenido: 'Apuntes',
+            semestre: 5,
+            tags: ['html', 'css', 'javascript', 'react'],
+            autorNombre: 'Juan Pérez',
+            descargas: 45,
+            calificacionPromedio: 4.5,
+            totalCalificaciones: 12,
+            fechaSubida: new Date('2025-01-15')
+        };
+
+        // Load resource data
+        function loadResourceData() {
+            document.getElementById('resourceTitle').textContent = sampleResource.titulo;
+            document.getElementById('resourceDescription').textContent = sampleResource.descripcion;
+            document.getElementById('infoMateria').textContent = sampleResource.materia;
+            document.getElementById('infoTipo').textContent = sampleResource.tipoContenido;
+            document.getElementById('infoSemestre').textContent = `${sampleResource.semestre}° Semestre`;
+            document.getElementById('infoAutor').textContent = sampleResource.autorNombre;
+            document.getElementById('infoFecha').textContent = sampleResource.fechaSubida.toLocaleDateString('es-MX');
+            document.getElementById('statsDescargas').textContent = sampleResource.descargas;
+
+            // Load tags
+            const tagsList = document.getElementById('tagsList');
+            sampleResource.tags.forEach(tag => {
+                const badge = document.createElement('span');
+                badge.className = 'badge badge-outline';
+                badge.textContent = tag;
+                tagsList.appendChild(badge);
+            });
+        }
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star-rating');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function () {
+                selectedRating = parseInt(this.dataset.rating);
+                updateStars(selectedRating);
+            });
+
+            star.addEventListener('mouseenter', function () {
+                updateStars(parseInt(this.dataset.rating));
+            });
+        });
+
+        document.querySelector('.card:has(.star-rating)').addEventListener('mouseleave', function () {
+            updateStars(selectedRating);
+        });
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.style.color = '#ffc107';
+                } else {
+                    star.style.color = 'var(--border-color)';
+                }
+            });
+        }
+
+        // Submit rating
+        document.getElementById('submitRatingBtn').addEventListener('click', function () {
+            if (selectedRating > 0) {
+                alert(`Calificación enviada: ${selectedRating} estrellas`);
+                // TODO: Save to Firebase
+            } else {
+                alert('Por favor selecciona una calificación');
+            }
+        });
+
+        // Download button
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            alert('Descargando recurso...');
+            // TODO: Implement actual download
+        });
+
+        // Share button
+        document.getElementById('shareBtn').addEventListener('click', function () {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url);
+            alert('Enlace copiado al portapapeles');
+        });
+
+        // Add comment
+        document.getElementById('addCommentBtn').addEventListener('click', function () {
+            const commentText = document.getElementById('commentText').value.trim();
+            if (commentText) {
+                alert('Comentario publicado');
+                document.getElementById('commentText').value = '';
+                // TODO: Save to Firebase
+            }
+        });
+
+        // Load data on page load
+        loadResourceData();
+    </script>
+</body>
+
+</html>

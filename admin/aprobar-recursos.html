@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobar Recursos - ISC-Hub</title>
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <style>
+        .admin-nav {
+            background-color: var(--background-light);
+            padding: var(--spacing-lg) 0;
+            margin-bottom: var(--spacing-2xl);
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .admin-nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .admin-nav-link {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .admin-nav-link:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .admin-nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .resource-review-card {
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            transition: box-shadow var(--transition-fast);
+        }
+
+        .resource-review-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .resource-preview-thumb {
+            width: 100%;
+            height: 200px;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-muted);
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div id="header"></div>
+
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+            <div class="container">
+                <div class="admin-nav-links">
+                    <a href="dashboard.html" class="admin-nav-link">📊 Dashboard</a>
+                    <a href="aprobar-usuarios.html" class="admin-nav-link">👥 Aprobar Usuarios</a>
+                    <a href="aprobar-recursos.html" class="admin-nav-link active">📚 Aprobar Recursos</a>
+                    <a href="gestionar-usuarios.html" class="admin-nav-link">⚙️ Gestionar Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2xl);">
+                    <div>
+                        <h1 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">Aprobar Recursos</h1>
+                        <p style="color: var(--text-secondary);">Revisa y modera recursos subidos por la comunidad</p>
+                    </div>
+                    <div class="badge badge-warning"
+                        style="font-size: var(--font-size-lg); padding: var(--spacing-sm) var(--spacing-lg);">
+                        12 Pendientes
+                    </div>
+                </div>
+
+                <!-- Pending Resources List -->
+                <div id="pendingResourcesList">
+                    <!-- Resource 1 -->
+                    <div class="resource-review-card">
+                        <div class="resource-header">
+                            <div>
+                                <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">
+                                    Apuntes Completos de Programación Web
+                                </h3>
+                                <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                                    Por: Juan Pérez García • Hace 3 horas
+                                </p>
+                            </div>
+                            <span class="badge badge-primary">PDF</span>
+                        </div>
+
+                        <p style="margin-bottom: var(--spacing-lg); color: var(--text-primary);">
+                            Apuntes completos del curso de Programación Web incluyendo HTML5, CSS3, JavaScript ES6+,
+                            React y Node.js. Material actualizado 2025.
+                        </p>
+
+                        <div class="resource-meta">
+                            <span class="badge badge-outline">📚 Programación</span>
+                            <span class="badge badge-outline">📝 Apuntes</span>
+                            <span class="badge badge-outline">🎓 5° Semestre</span>
+                            <span class="badge badge-secondary">Tags: html, css, javascript, react</span>
+                        </div>
+
+                        <div class="resource-preview-thumb">
+                            <div style="text-align: center;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <p style="margin-top: var(--spacing-sm);">Vista previa del PDF</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-actions">
+                            <button class="btn btn-outline" onclick="viewResource('1')">
+                                👁️ Ver Detalle
+                            </button>
+                            <button class="btn btn-error" onclick="rejectResource('1')">
+                                ✗ Rechazar
+                            </button>
+                            <button class="btn btn-success" onclick="approveResource('1')">
+                                ✓ Aprobar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resource 2 -->
+                    <div class="resource-review-card">
+                        <div class="resource-header">
+                            <div>
+                                <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">
+                                    Proyecto: Sistema de Gestión Escolar
+                                </h3>
+                                <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                                    Por: María González López • Hace 1 día
+                                </p>
+                            </div>
+                            <span class="badge badge-info">ZIP</span>
+                        </div>
+
+                        <p style="margin-bottom: var(--spacing-lg); color: var(--text-primary);">
+                            Proyecto completo de un sistema de gestión escolar desarrollado en Python con Django.
+                            Incluye base de datos PostgreSQL, autenticación, CRUD completo y reportes.
+                        </p>
+
+                        <div class="resource-meta">
+                            <span class="badge badge-outline">💾 Bases de Datos</span>
+                            <span class="badge badge-outline">🚀 Proyecto</span>
+                            <span class="badge badge-outline">🎓 6° Semestre</span>
+                            <span class="badge badge-secondary">Tags: python, django, postgresql</span>
+                        </div>
+
+                        <div class="resource-preview-thumb">
+                            <div style="text-align: center;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                </svg>
+                                <p style="margin-top: var(--spacing-sm);">Archivo comprimido</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-actions">
+                            <button class="btn btn-outline" onclick="viewResource('2')">
+                                👁️ Ver Detalle
+                            </button>
+                            <button class="btn btn-error" onclick="rejectResource('2')">
+                                ✗ Rechazar
+                            </button>
+                            <button class="btn btn-success" onclick="approveResource('2')">
+                                ✓ Aprobar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resource 3 -->
+                    <div class="resource-review-card">
+                        <div class="resource-header">
+                            <div>
+                                <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">
+                                    Tutorial: Configuración de Redes con Cisco Packet Tracer
+                                </h3>
+                                <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                                    Por: Carlos Ramírez • Hace 2 días
+                                </p>
+                            </div>
+                            <span class="badge badge-success">YouTube</span>
+                        </div>
+
+                        <p style="margin-bottom: var(--spacing-lg); color: var(--text-primary);">
+                            Tutorial completo paso a paso para configurar redes usando Cisco Packet Tracer.
+                            Incluye ejemplos prácticos de VLANs, routing y switching.
+                        </p>
+
+                        <div class="resource-meta">
+                            <span class="badge badge-outline">🌐 Redes</span>
+                            <span class="badge badge-outline">🎬 Tutorial</span>
+                            <span class="badge badge-outline">🎓 4° Semestre</span>
+                            <span class="badge badge-secondary">Tags: cisco, redes, packet-tracer</span>
+                        </div>
+
+                        <div class="resource-preview-thumb">
+                            <div style="text-align: center;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                </svg>
+                                <p style="margin-top: var(--spacing-sm);">Video de YouTube</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-actions">
+                            <button class="btn btn-outline" onclick="viewResource('3')">
+                                👁️ Ver Detalle
+                            </button>
+                            <button class="btn btn-error" onclick="rejectResource('3')">
+                                ✗ Rechazar
+                            </button>
+                            <button class="btn btn-success" onclick="approveResource('3')">
+                                ✓ Aprobar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="../js/components/header-loader.js"></script>
+    <script>
+        function approveResource(resourceId) {
+            if (confirm('¿Aprobar este recurso?')) {
+                // TODO: Firebase implementation
+                alert('Recurso aprobado y publicado');
+                location.reload();
+            }
+        }
+
+        function rejectResource(resourceId) {
+            const reason = prompt('Motivo del rechazo (opcional):');
+            if (reason !== null) {
+                // TODO: Firebase implementation
+                alert('Recurso rechazado');
+                location.reload();
+            }
+        }
+
+        function viewResource(resourceId) {
+            window.open(`../recurso-detalle.html?id=${resourceId}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>

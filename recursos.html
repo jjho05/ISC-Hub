@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISC-Hub - Recursos Educativos ISC</title>
+    <meta name="description"
+        content="Plataforma colaborativa para estudiantes y docentes de Ingeniería en Sistemas Computacionales. Comparte y descubre recursos educativos.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <div id="header"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <section style="text-align: center; margin-bottom: var(--spacing-3xl);">
+                    <h1
+                        style="font-size: var(--font-size-5xl); margin-bottom: var(--spacing-md); color: var(--primary-color);">
+                        Recursos Educativos ISC
+                    </h1>
+                    <p
+                        style="font-size: var(--font-size-lg); color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Explora, comparte y descarga recursos educativos creados por la comunidad de Ingeniería en
+                        Sistemas Computacionales
+                    </p>
+                </section>
+
+                <!-- Layout with Sidebar -->
+                <div class="layout-with-sidebar">
+                    <!-- Sidebar - Filters -->
+                    <aside class="sidebar">
+                        <!-- Filtro por Materia -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Materias</h3>
+                            <ul class="sidebar-list" id="materiaFilters">
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="todas" checked>
+                                        <span>Todas</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="programacion">
+                                        <span>Programación</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="bases-datos">
+                                        <span>Bases de Datos</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="redes">
+                                        <span>Redes</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="arquitectura">
+                                        <span>Arquitectura de Computadoras</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="inteligencia-artificial">
+                                        <span>Inteligencia Artificial</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Filtro por Tipo -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Tipo de Contenido</h3>
+                            <ul class="sidebar-list" id="tipoFilters">
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="todos" checked>
+                                        <span>Todos</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="apuntes">
+                                        <span>Apuntes</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="proyectos">
+                                        <span>Proyectos</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="ideas">
+                                        <span>Ideas</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="codigos">
+                                        <span>Códigos</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="tareas">
+                                        <span>Tareas</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="examenes">
+                                        <span>Exámenes</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="tutoriales">
+                                        <span>Tutoriales</span>
+                                    </label>
+                                </li>
+                                <li class="sidebar-item">
+                                    <label
+                                        style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" value="otros">
+                                        <span>Otros</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Filtro por Semestre -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Semestre</h3>
+                            <select id="semestreFilter"
+                                style="width: 100%; padding: var(--spacing-sm); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                <option value="todos">Todos</option>
+                                <option value="1">1° Semestre</option>
+                                <option value="2">2° Semestre</option>
+                                <option value="3">3° Semestre</option>
+                                <option value="4">4° Semestre</option>
+                                <option value="5">5° Semestre</option>
+                                <option value="6">6° Semestre</option>
+                                <option value="7">7° Semestre</option>
+                                <option value="8">8° Semestre</option>
+                                <option value="9">9° Semestre</option>
+                            </select>
+                        </div>
+
+                        <!-- Ordenar por -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Ordenar por</h3>
+                            <select id="sortFilter"
+                                style="width: 100%; padding: var(--spacing-sm); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                <option value="recientes">Más Recientes</option>
+                                <option value="populares">Más Populares</option>
+                                <option value="mejor-calificados">Mejor Calificados</option>
+                                <option value="mas-descargados">Más Descargados</option>
+                            </select>
+                        </div>
+                    </aside>
+
+                    <!-- Main Content Area -->
+                    <div>
+                        <!-- Stats Bar -->
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); background-color: var(--background-light); border-radius: var(--border-radius-lg);">
+                            <div>
+                                <span
+                                    style="font-size: var(--font-size-sm); color: var(--text-secondary);">Mostrando</span>
+                                <strong id="resourceCount"
+                                    style="font-size: var(--font-size-lg); color: var(--primary-color); margin-left: var(--spacing-xs);">0</strong>
+                                <span
+                                    style="font-size: var(--font-size-sm); color: var(--text-secondary);">recursos</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm" id="clearFilters">
+                                Limpiar Filtros
+                            </button>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div id="loadingState"
+                            style="display: flex; justify-content: center; align-items: center; padding: var(--spacing-3xl);">
+                            <div class="spinner"></div>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="emptyState" style="display: none; text-align: center; padding: var(--spacing-3xl);">
+                            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1" style="margin: 0 auto var(--spacing-lg); color: var(--text-muted);">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                <polyline points="13 2 13 9 20 9"></polyline>
+                            </svg>
+                            <h3 style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">No se
+                                encontraron recursos</h3>
+                            <p style="color: var(--text-muted);">Intenta ajustar los filtros o sube el primer recurso
+                            </p>
+                            <button class="btn btn-primary" style="margin-top: var(--spacing-lg);"
+                                onclick="window.location.href='subir-recurso.html'">
+                                Subir Recurso
+                            </button>
+                        </div>
+
+                        <!-- Resources Grid -->
+                        <div id="resourcesGrid" class="grid grid-cols-3" style="display: none;">
+                            <!-- Resources will be dynamically loaded here -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div id="pagination"
+                            style="display: none; margin-top: var(--spacing-2xl); display: flex; justify-content: center; gap: var(--spacing-sm);">
+                            <!-- Pagination buttons will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/components/header-loader.js"></script>
+    <script src="js/recursos/listar-recursos.js"></script>
+    <script src="js/recursos/filtrar-recursos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Usuarios - ISC-Hub</title>
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <style>
+        .admin-nav {
+            background-color: var(--background-light);
+            padding: var(--spacing-lg) 0;
+            margin-bottom: var(--spacing-2xl);
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .admin-nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .admin-nav-link {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .admin-nav-link:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .admin-nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .users-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .users-table th {
+            padding: var(--spacing-lg);
+            text-align: left;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .users-table td {
+            padding: var(--spacing-lg);
+            border-bottom: var(--border-width) solid var(--border-light);
+        }
+
+        .users-table tbody tr:hover {
+            background-color: var(--background-light);
+        }
+
+        .user-name-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .user-mini-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-bar input,
+        .filter-bar select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-md);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div id="header"></div>
+
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+            <div class="container">
+                <div class="admin-nav-links">
+                    <a href="dashboard.html" class="admin-nav-link">📊 Dashboard</a>
+                    <a href="aprobar-usuarios.html" class="admin-nav-link">👥 Aprobar Usuarios</a>
+                    <a href="aprobar-recursos.html" class="admin-nav-link">📚 Aprobar Recursos</a>
+                    <a href="gestionar-usuarios.html" class="admin-nav-link active">⚙️ Gestionar Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="container">
+                <div style="margin-bottom: var(--spacing-2xl);">
+                    <h1 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">Gestionar Usuarios</h1>
+                    <p style="color: var(--text-secondary);">Administra roles, permisos y estado de usuarios</p>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <input type="text" placeholder="🔍 Buscar por nombre o correo..." style="flex: 1; min-width: 250px;"
+                        id="searchInput">
+                    <select id="roleFilter" style="min-width: 150px;">
+                        <option value="">Todos los roles</option>
+                        <option value="alumno">Alumno</option>
+                        <option value="docente">Docente</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <select id="statusFilter" style="min-width: 150px;">
+                        <option value="">Todos los estados</option>
+                        <option value="activo">Activo</option>
+                        <option value="bloqueado">Bloqueado</option>
+                    </select>
+                </div>
+
+                <!-- Users Table -->
+                <div style="overflow-x: auto;">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Recursos</th>
+                                <th>Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- User 1 - Admin -->
+                            <tr>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-mini-avatar">JH</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-weight-semibold);">Jesús Hernández</div>
+                                            <div style="font-size: var(--font-size-sm); color: var(--text-muted);">
+                                                19070123</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>jesus.hernandez@cdmadero.tecnm.mx</td>
+                                <td><span class="badge badge-error">Admin</span></td>
+                                <td><span class="badge badge-success">Activo</span></td>
+                                <td style="text-align: center;">23</td>
+                                <td>15/01/2025</td>
+                                <td>
+                                    <div style="display: flex; gap: var(--spacing-xs);">
+                                        <button class="btn btn-outline btn-sm" onclick="viewUserDetails('1')"
+                                            title="Ver detalles">
+                                            👁️
+                                        </button>
+                                        <button class="btn btn-outline btn-sm" disabled
+                                            title="No puedes modificar tu propia cuenta">
+                                            ⚙️
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- User 2 -->
+                            <tr>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-mini-avatar">MG</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-weight-semibold);">María González</div>
+                                            <div style="font-size: var(--font-size-sm); color: var(--text-muted);">
+                                                20070456</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>maria.gonzalez@cdmadero.tecnm.mx</td>
+                                <td><span class="badge badge-primary">Alumno</span></td>
+                                <td><span class="badge badge-success">Activo</span></td>
+                                <td style="text-align: center;">12</td>
+                                <td>10/01/2025</td>
+                                <td>
+                                    <div style="display: flex; gap: var(--spacing-xs);">
+                                        <button class="btn btn-outline btn-sm" onclick="viewUserDetails('2')"
+                                            title="Ver detalles">
+                                            👁️
+                                        </button>
+                                        <button class="btn btn-outline btn-sm"
+                                            onclick="manageUser('2', 'María González')" title="Gestionar">
+                                            ⚙️
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- User 3 - Docente -->
+                            <tr>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-mini-avatar">CP</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-weight-semibold);">Carlos Pérez</div>
+                                            <div style="font-size: var(--font-size-sm); color: var(--text-muted);">
+                                                D1234567</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>carlos.perez@cdmadero.tecnm.mx</td>
+                                <td><span class="badge badge-info">Docente</span></td>
+                                <td><span class="badge badge-success">Activo</span></td>
+                                <td style="text-align: center;">45</td>
+                                <td>05/01/2025</td>
+                                <td>
+                                    <div style="display: flex; gap: var(--spacing-xs);">
+                                        <button class="btn btn-outline btn-sm" onclick="viewUserDetails('3')"
+                                            title="Ver detalles">
+                                            👁️
+                                        </button>
+                                        <button class="btn btn-outline btn-sm" onclick="manageUser('3', 'Carlos Pérez')"
+                                            title="Gestionar">
+                                            ⚙️
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- User 4 -->
+                            <tr>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-mini-avatar">AL</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-weight-semibold);">Ana López</div>
+                                            <div style="font-size: var(--font-size-sm); color: var(--text-muted);">
+                                                21070789</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ana.lopez@cdmadero.tecnm.mx</td>
+                                <td><span class="badge badge-primary">Alumno</span></td>
+                                <td><span class="badge badge-success">Activo</span></td>
+                                <td style="text-align: center;">8</td>
+                                <td>12/01/2025</td>
+                                <td>
+                                    <div style="display: flex; gap: var(--spacing-xs);">
+                                        <button class="btn btn-outline btn-sm" onclick="viewUserDetails('4')"
+                                            title="Ver detalles">
+                                            👁️
+                                        </button>
+                                        <button class="btn btn-outline btn-sm" onclick="manageUser('4', 'Ana López')"
+                                            title="Gestionar">
+                                            ⚙️
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- User 5 - Bloqueado -->
+                            <tr>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-mini-avatar">RS</div>
+                                        <div>
+                                            <div style="font-weight: var(--font-weight-semibold);">Roberto Sánchez</div>
+                                            <div style="font-size: var(--font-size-sm); color: var(--text-muted);">
+                                                19070234</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>roberto.sanchez@cdmadero.tecnm.mx</td>
+                                <td><span class="badge badge-primary">Alumno</span></td>
+                                <td><span class="badge badge-error">Bloqueado</span></td>
+                                <td style="text-align: center;">3</td>
+                                <td>08/01/2025</td>
+                                <td>
+                                    <div style="display: flex; gap: var(--spacing-xs);">
+                                        <button class="btn btn-outline btn-sm" onclick="viewUserDetails('5')"
+                                            title="Ver detalles">
+                                            👁️
+                                        </button>
+                                        <button class="btn btn-outline btn-sm"
+                                            onclick="manageUser('5', 'Roberto Sánchez')" title="Gestionar">
+                                            ⚙️
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+
+    <!-- Manage User Modal -->
+    <div class="modal" id="manageUserModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="modalUserName">Gestionar Usuario</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <label
+                        style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                        Cambiar Rol
+                    </label>
+                    <select id="newRole"
+                        style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                        <option value="alumno">Alumno</option>
+                        <option value="docente">Docente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <small style="color: var(--text-muted); display: block; margin-top: var(--spacing-xs);">
+                        Los administradores tienen acceso completo al panel de administración
+                    </small>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <label
+                        style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                        Estado de la Cuenta
+                    </label>
+                    <select id="newStatus"
+                        style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                        <option value="activo">Activo</option>
+                        <option value="bloqueado">Bloqueado</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: var(--spacing-md); justify-content: flex-end;">
+                    <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+                    <button class="btn btn-primary" onclick="saveUserChanges()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/components/header-loader.js"></script>
+    <script>
+        let currentUserId = null;
+
+        function viewUserDetails(userId) {
+            alert('Ver detalles del usuario (próximamente)');
+        }
+
+        function manageUser(userId, userName) {
+            currentUserId = userId;
+            document.getElementById('modalUserName').textContent = `Gestionar: ${userName}`;
+            document.getElementById('manageUserModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('manageUserModal').classList.remove('show');
+            currentUserId = null;
+        }
+
+        function saveUserChanges() {
+            const newRole = document.getElementById('newRole').value;
+            const newStatus = document.getElementById('newStatus').value;
+
+            if (newRole === 'admin') {
+                if (!confirm('¿Estás seguro de otorgar permisos de administrador? Esta acción le dará acceso completo al panel de administración.')) {
+                    return;
+                }
+            }
+
+            // TODO: Firebase implementation
+            alert(`Cambios guardados:\nRol: ${newRole}\nEstado: ${newStatus}`);
+            closeModal();
+            location.reload();
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function () {
+            // TODO: Implement search
+            console.log('Searching:', this.value);
+        });
+
+        // Filter functionality
+        document.getElementById('roleFilter').addEventListener('change', function () {
+            // TODO: Implement filter
+            console.log('Filter by role:', this.value);
+        });
+
+        document.getElementById('statusFilter').addEventListener('change', function () {
+            // TODO: Implement filter
+            console.log('Filter by status:', this.value);
+        });
+    </script>
+</body>
+
+</html>

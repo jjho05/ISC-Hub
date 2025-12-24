@@ -1,0 +1,130 @@
+<!-- Header Component -->
+<header class="header">
+    <div class="container header-container">
+        <!-- Logo -->
+        <a href="index.html" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="currentColor" />
+                <path d="M8 10h16M8 16h16M8 22h16" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>ISC-Hub</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="header-nav">
+            <ul class="header-nav-links">
+                <li><a href="index.html" class="header-nav-link">Inicio</a></li>
+                <li><a href="subir-recurso.html" class="header-nav-link">Subir Recurso</a></li>
+                <li><a href="banco-ideas/index.html" class="header-nav-link">Banco de Ideas</a></li>
+                <li><a href="#" class="header-nav-link">Mis Recursos</a></li>
+            </ul>
+
+            <!-- Search Bar -->
+            <div class="header-search">
+                <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="search" class="header-search-input" placeholder="Buscar recursos...">
+            </div>
+        </nav>
+
+        <!-- Actions -->
+        <div class="header-actions">
+            <button class="btn btn-primary" onclick="window.location.href='subir-recurso.html'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Subir
+            </button>
+
+            <!-- User Menu -->
+            <div class="dropdown header-user" id="userDropdown">
+                <div class="header-user-avatar" id="userAvatar">U</div>
+                <div class="dropdown-menu" id="userMenu">
+                    <a href="perfil.html" class="dropdown-item">Mi Perfil</a>
+                    <a href="recursos.html?mis-recursos=true" class="dropdown-item">Mis Recursos</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="admin/dashboard.html" class="dropdown-item" id="adminLink" style="display: none;">Panel
+                        Admin</a>
+                    <div class="dropdown-divider" id="adminDivider" style="display: none;"></div>
+                    <a href="#" class="dropdown-item" id="logoutBtn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <a href="index.html" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="currentColor" />
+                <path d="M8 10h16M8 16h16M8 22h16" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>ISC-Hub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="mobile-menu-nav">
+        <a href="index.html" class="mobile-menu-link">Inicio</a>
+        <a href="recursos.html" class="mobile-menu-link">Recursos</a>
+        <a href="subir-recurso.html" class="mobile-menu-link">Subir Recurso</a>
+        <a href="banco-ideas/index.html" class="mobile-menu-link">Banco de Ideas</a>
+        <a href="perfil.html" class="mobile-menu-link">Mi Perfil</a>
+        <a href="admin/dashboard.html" class="mobile-menu-link" id="adminLinkMobile" style="display: none;">Panel
+            Admin</a>
+        <a href="#" class="mobile-menu-link" id="logoutBtnMobile">Cerrar Sesión</a>
+    </nav>
+</div>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuToggle?.addEventListener('click', () => {
+        mobileMenu.classList.add('show');
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+    });
+
+    // User dropdown toggle
+    const userDropdown = document.getElementById('userDropdown');
+    const userMenu = document.getElementById('userMenu');
+
+    userDropdown?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        userMenu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        userMenu?.classList.remove('show');
+    });
+
+    // Search functionality (placeholder)
+    const searchInput = document.querySelector('.header-search-input');
+    searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        // TODO: Implement search functionality
+        console.log('Searching for:', query);
+    });
+</script>

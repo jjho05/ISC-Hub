@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Revisar Ideas - Admin</title>
+    <link href="https://www.cdmadero.tecnm.mx/images/favicon.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <link href="../css/banco-ideas.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+
+    <main class="py-10">
+        <div class="container mx-auto px-4 sm:px-10">
+            <div class="mb-8">
+                <a href="../index.html" class="text-[var(--primary-color)] hover:underline">← Volver al Banco de
+                    Ideas</a>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Revisar Ideas Pendientes</h1>
+                <p class="text-gray-600">Aprueba o rechaza las ideas propuestas por los usuarios</p>
+            </div>
+
+            <!-- Navegación Admin -->
+            <div class="bg-white rounded-lg shadow-md mb-6">
+                <div class="flex flex-wrap border-b border-gray-200">
+                    <a href="dashboard.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        📊 Dashboard
+                    </a>
+                    <a href="revisar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-[var(--primary-color)] text-[var(--primary-color)]">
+                        ✅ Revisar Ideas
+                    </a>
+                    <a href="gestionar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        ⚙️ Gestionar Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ideas Pendientes -->
+            <div class="space-y-6">
+                <!-- Idea 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-[var(--primary-color)] mb-2">Control de Asistencia
+                                Biométrico</h2>
+                            <p class="text-gray-600 mb-2">Propuesta por <strong>María González López</strong> • 20 de
+                                enero de 2025</p>
+                            <span class="estado-badge" style="background-color: #fef3c7; color: #92400e;">🟡
+                                Pendiente</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h3 class="font-semibold mb-2">Antecedentes:</h3>
+                            <p class="text-gray-700 text-sm">Necesidad de modernizar el control de asistencia en
+                                pequeñas empresas...</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Problema:</h3>
+                            <p class="text-gray-700 text-sm">Falta de sistemas automatizados para registro de
+                                asistencia...</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Objetivo General:</h3>
+                            <p class="text-gray-700 text-sm">Desarrollar sistema de control de asistencia con
+                                reconocimiento biométrico</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Destinos:</h3>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="badge badge-primary">GPS</span>
+                                <span class="badge badge-primary">Innovatec</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="aprobarIdea(1)"
+                            class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600">
+                            ✅ Aprobar
+                        </button>
+                        <button onclick="rechazarIdea(1)"
+                            class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600">
+                            ❌ Rechazar
+                        </button>
+                        <button onclick="verDetalle(1)"
+                            class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600">
+                            👁️ Ver Completo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Idea 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-[var(--primary-color)] mb-2">App de Delivery Local</h2>
+                            <p class="text-gray-600 mb-2">Propuesta por <strong>Carlos Ramírez</strong> • 20 de enero de
+                                2025</p>
+                            <span class="estado-badge" style="background-color: #fef3c7; color: #92400e;">🟡
+                                Pendiente</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h3 class="font-semibold mb-2">Antecedentes:</h3>
+                            <p class="text-gray-700 text-sm">Comercios locales sin plataforma de delivery propia...</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Problema:</h3>
+                            <p class="text-gray-700 text-sm">Dependencia de apps externas con altas comisiones...</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Objetivo General:</h3>
+                            <p class="text-gray-700 text-sm">Crear plataforma de delivery para comercios locales</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Destinos:</h3>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="badge badge-primary">Expociencias</span>
+                                <span class="badge">Práctica</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="aprobarIdea(2)"
+                            class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600">
+                            ✅ Aprobar
+                        </button>
+                        <button onclick="rechazarIdea(2)"
+                            class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600">
+                            ❌ Rechazar
+                        </button>
+                        <button onclick="verDetalle(2)"
+                            class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600">
+                            👁️ Ver Completo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <!-- Modal Rechazar -->
+    <div id="modalRechazar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Rechazar Idea</h2>
+                <button onclick="cerrarModal()" class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-4">Indica el motivo del rechazo (será enviado al autor):</p>
+                <form id="formRechazar">
+                    <textarea id="motivoRechazo" required rows="4"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4"
+                        placeholder="Motivo del rechazo..."></textarea>
+                    <div class="flex gap-3">
+                        <button type="submit"
+                            class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600">Confirmar
+                            Rechazo</button>
+                        <button type="button" onclick="cerrarModal()"
+                            class="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('../../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
+
+        let ideaActual = null;
+
+        function aprobarIdea(id) {
+            if (confirm('¿Aprobar esta idea? Se publicará en el Banco de Ideas.')) {
+                alert('✅ Idea aprobada exitosamente');
+                location.reload();
+            }
+        }
+
+        function rechazarIdea(id) {
+            ideaActual = id;
+            document.getElementById('modalRechazar').classList.add('show');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalRechazar').classList.remove('show');
+            ideaActual = null;
+        }
+
+        function verDetalle(id) {
+            window.location.href = `../idea-detalle.html?id=${id}`;
+        }
+
+        document.getElementById('formRechazar').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const motivo = document.getElementById('motivoRechazo').value;
+            alert(`❌ Idea rechazada\n\nMotivo: ${motivo}\n\nSe notificará al autor.`);
+            cerrarModal();
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>

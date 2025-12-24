@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - ISC-Hub</title>
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="container">
+                <h1 style="margin-bottom: var(--spacing-2xl); color: var(--primary-color);">Panel de Administración</h1>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-4" style="margin-bottom: var(--spacing-3xl);">
+                    <div class="card" style="text-align: center;">
+                        <div
+                            style="font-size: var(--font-size-4xl); color: var(--primary-color); font-weight: var(--font-weight-bold);">
+                            156</div>
+                        <div style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Total Recursos</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div
+                            style="font-size: var(--font-size-4xl); color: var(--warning-color); font-weight: var(--font-weight-bold);">
+                            12</div>
+                        <div style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Pendientes Aprobación
+                        </div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div
+                            style="font-size: var(--font-size-4xl); color: var(--success-color); font-weight: var(--font-weight-bold);">
+                            89</div>
+                        <div style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Usuarios Activos</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div
+                            style="font-size: var(--font-size-4xl); color: var(--info-color); font-weight: var(--font-weight-bold);">
+                            5</div>
+                        <div style="color: var(--text-secondary); margin-top: var(--spacing-sm);">Usuarios Pendientes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="grid grid-cols-3" style="margin-bottom: var(--spacing-3xl);">
+                    <a href="aprobar-usuarios.html" class="card"
+                        style="text-decoration: none; padding: var(--spacing-xl); transition: transform var(--transition-fast);">
+                        <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">👥 Aprobar Usuarios
+                        </h3>
+                        <p style="color: var(--text-secondary);">Revisa y aprueba nuevos registros</p>
+                    </a>
+                    <a href="aprobar-recursos.html" class="card"
+                        style="text-decoration: none; padding: var(--spacing-xl); transition: transform var(--transition-fast);">
+                        <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">📚 Aprobar Recursos
+                        </h3>
+                        <p style="color: var(--text-secondary);">Modera recursos subidos</p>
+                    </a>
+                    <a href="gestionar-usuarios.html" class="card"
+                        style="text-decoration: none; padding: var(--spacing-xl); transition: transform var(--transition-fast);">
+                        <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">⚙️ Gestionar Usuarios
+                        </h3>
+                        <p style="color: var(--text-secondary);">Administra roles y permisos</p>
+                    </a>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <h2 style="margin-bottom: var(--spacing-lg);">Actividad Reciente</h2>
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                        <div
+                            style="padding: var(--spacing-md); border-left: 4px solid var(--success-color); background-color: var(--background-light);">
+                            <strong>Recurso aprobado:</strong> "Apuntes de Programación Web" por Juan Pérez
+                        </div>
+                        <div
+                            style="padding: var(--spacing-md); border-left: 4px solid var(--info-color); background-color: var(--background-light);">
+                            <strong>Nuevo usuario:</strong> María González se registró como Alumno
+                        </div>
+                        <div
+                            style="padding: var(--spacing-md); border-left: 4px solid var(--warning-color); background-color: var(--background-light);">
+                            <strong>Recurso pendiente:</strong> "Tutorial de Redes" esperando aprobación
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="../js/components/header-loader.js"></script>
+</body>
+
+</html>

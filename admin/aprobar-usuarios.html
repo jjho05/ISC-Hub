@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobar Usuarios - ISC-Hub</title>
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <style>
+        .admin-nav {
+            background-color: var(--background-light);
+            padding: var(--spacing-lg) 0;
+            margin-bottom: var(--spacing-2xl);
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .admin-nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .admin-nav-link {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .admin-nav-link:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .admin-nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--spacing-lg);
+            align-items: center;
+            padding: var(--spacing-lg);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--spacing-md);
+            transition: box-shadow var(--transition-fast);
+        }
+
+        .user-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .user-info h3 {
+            margin-bottom: var(--spacing-xs);
+            color: var(--primary-color);
+        }
+
+        .user-details {
+            display: flex;
+            gap: var(--spacing-lg);
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div id="header"></div>
+
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+            <div class="container">
+                <div class="admin-nav-links">
+                    <a href="dashboard.html" class="admin-nav-link">📊 Dashboard</a>
+                    <a href="aprobar-usuarios.html" class="admin-nav-link active">👥 Aprobar Usuarios</a>
+                    <a href="aprobar-recursos.html" class="admin-nav-link">📚 Aprobar Recursos</a>
+                    <a href="gestionar-usuarios.html" class="admin-nav-link">⚙️ Gestionar Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2xl);">
+                    <div>
+                        <h1 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">Aprobar Usuarios</h1>
+                        <p style="color: var(--text-secondary);">Revisa y aprueba nuevos registros de usuarios</p>
+                    </div>
+                    <div class="badge badge-warning"
+                        style="font-size: var(--font-size-lg); padding: var(--spacing-sm) var(--spacing-lg);">
+                        5 Pendientes
+                    </div>
+                </div>
+
+                <!-- Pending Users List -->
+                <div id="pendingUsersList">
+                    <!-- User 1 -->
+                    <div class="user-card">
+                        <div class="user-avatar">JH</div>
+                        <div class="user-info">
+                            <h3>Jesús Hernández Olvera</h3>
+                            <div class="user-details">
+                                <span>📧 jesus.hernandez@cdmadero.tecnm.mx</span>
+                                <span>🎓 Alumno</span>
+                                <span>🔢 19070123</span>
+                                <span>📅 Hace 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-success btn-sm" onclick="approveUser('1')">
+                                ✓ Aprobar
+                            </button>
+                            <button class="btn btn-error btn-sm" onclick="rejectUser('1')">
+                                ✗ Rechazar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User 2 -->
+                    <div class="user-card">
+                        <div class="user-avatar">MG</div>
+                        <div class="user-info">
+                            <h3>María González López</h3>
+                            <div class="user-details">
+                                <span>📧 maria.gonzalez@cdmadero.tecnm.mx</span>
+                                <span>🎓 Alumno</span>
+                                <span>🔢 20070456</span>
+                                <span>📅 Hace 5 horas</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-success btn-sm" onclick="approveUser('2')">
+                                ✓ Aprobar
+                            </button>
+                            <button class="btn btn-error btn-sm" onclick="rejectUser('2')">
+                                ✗ Rechazar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User 3 -->
+                    <div class="user-card">
+                        <div class="user-avatar">CP</div>
+                        <div class="user-info">
+                            <h3>Carlos Pérez Ramírez</h3>
+                            <div class="user-details">
+                                <span>📧 carlos.perez@cdmadero.tecnm.mx</span>
+                                <span>👨‍🏫 Docente</span>
+                                <span>🔢 D1234567</span>
+                                <span>📅 Hace 1 día</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-success btn-sm" onclick="approveUser('3')">
+                                ✓ Aprobar
+                            </button>
+                            <button class="btn btn-error btn-sm" onclick="rejectUser('3')">
+                                ✗ Rechazar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User 4 -->
+                    <div class="user-card">
+                        <div class="user-avatar">AL</div>
+                        <div class="user-info">
+                            <h3>Ana López Martínez</h3>
+                            <div class="user-details">
+                                <span>📧 ana.lopez@cdmadero.tecnm.mx</span>
+                                <span>🎓 Alumno</span>
+                                <span>🔢 21070789</span>
+                                <span>📅 Hace 2 días</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-success btn-sm" onclick="approveUser('4')">
+                                ✓ Aprobar
+                            </button>
+                            <button class="btn btn-error btn-sm" onclick="rejectUser('4')">
+                                ✗ Rechazar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User 5 -->
+                    <div class="user-card">
+                        <div class="user-avatar">RS</div>
+                        <div class="user-info">
+                            <h3>Roberto Sánchez García</h3>
+                            <div class="user-details">
+                                <span>📧 roberto.sanchez@cdmadero.tecnm.mx</span>
+                                <span>🎓 Alumno</span>
+                                <span>🔢 19070234</span>
+                                <span>📅 Hace 3 días</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-success btn-sm" onclick="approveUser('5')">
+                                ✓ Aprobar
+                            </button>
+                            <button class="btn btn-error btn-sm" onclick="rejectUser('5')">
+                                ✗ Rechazar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State (hidden by default) -->
+                <div id="emptyState" style="display: none; text-align: center; padding: var(--spacing-3xl);">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                        style="margin: 0 auto var(--spacing-lg); color: var(--text-muted);">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <h3 style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">No hay usuarios
+                        pendientes</h3>
+                    <p style="color: var(--text-muted);">Todos los registros han sido procesados</p>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="../js/components/header-loader.js"></script>
+    <script>
+        function approveUser(userId) {
+            if (confirm('¿Aprobar este usuario?')) {
+                // TODO: Firebase implementation
+                alert('Usuario aprobado exitosamente');
+                location.reload();
+            }
+        }
+
+        function rejectUser(userId) {
+            if (confirm('¿Rechazar este usuario? Esta acción no se puede deshacer.')) {
+                // TODO: Firebase implementation
+                alert('Usuario rechazado');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>

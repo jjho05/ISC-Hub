@@ -1,0 +1,189 @@
+/**
+ * ========================================
+ * VARIABLES CSS - TecNM Oficial
+ * Sistema de Diseño ISC-Hub
+ * ======================================== 
+ */
+
+:root {
+    /* ========================================
+       COLORES OFICIALES TecNM
+       Manual de Identidad 2025
+       ======================================== */
+
+    /* Colores Primarios */
+    --tecnm-blue: #1B396A;
+    /* Pantone 294 C - Azul oficial */
+    --tecnm-gray: #807F83;
+    /* Cool Gray 10 C */
+    --tecnm-black: #000000;
+    /* Negro 100% */
+    --tecnm-silver: #ABABAB;
+    /* Pantone 877 C */
+
+    /* Aplicación de Colores */
+    --primary-color: #1B396A;
+    /* Azul oficial TecNM */
+    --primary-dark: #14305C;
+    /* Azul oscuro (hover states) */
+    --primary-light: #2A4A7F;
+    /* Azul claro (backgrounds) */
+
+    --secondary-color: #807F83;
+    /* Gris oficial */
+    --accent-color: #f0f2f4;
+    /* Gris claro (backgrounds) */
+
+    /* Colores de Texto */
+    --text-primary: #000000;
+    /* Negro oficial */
+    --text-secondary: #807F83;
+    /* Gris oficial */
+    --text-light: #ffffff;
+    /* Blanco */
+    --text-muted: #a0a0a0;
+    /* Gris claro para texto secundario */
+
+    /* Colores de Fondo */
+    --background-color: #ffffff;
+    --background-light: #f8f9fa;
+    --background-dark: #f0f2f4;
+
+    /* Colores de Borde */
+    --border-color: #dce0e5;
+    --border-light: #e8eaed;
+    --border-dark: #c4c7cc;
+
+    /* Colores de Estado */
+    --success-color: #28a745;
+    --success-light: #d4edda;
+    --error-color: #dc3545;
+    --error-light: #f8d7da;
+    --warning-color: #ffc107;
+    --warning-light: #fff3cd;
+    --info-color: #17a2b8;
+    --info-light: #d1ecf1;
+
+    /* ========================================
+       TIPOGRAFÍA
+       ======================================== */
+
+    /* Familias de Fuentes */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Noto Sans', sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* Tamaños de Fuente */
+    --font-size-xs: 0.75rem;
+    /* 12px */
+    --font-size-sm: 0.875rem;
+    /* 14px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.25rem;
+    /* 20px */
+    --font-size-2xl: 1.5rem;
+    /* 24px */
+    --font-size-3xl: 1.875rem;
+    /* 30px */
+    --font-size-4xl: 2.25rem;
+    /* 36px */
+    --font-size-5xl: 3rem;
+    /* 48px */
+
+    /* Pesos de Fuente */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    /* Altura de Línea */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* ========================================
+       ESPACIADO
+       ======================================== */
+
+    --spacing-xs: 0.25rem;
+    /* 4px */
+    --spacing-sm: 0.5rem;
+    /* 8px */
+    --spacing-md: 1rem;
+    /* 16px */
+    --spacing-lg: 1.5rem;
+    /* 24px */
+    --spacing-xl: 2rem;
+    /* 32px */
+    --spacing-2xl: 3rem;
+    /* 48px */
+    --spacing-3xl: 4rem;
+    /* 64px */
+
+    /* ========================================
+       BORDES Y RADIOS
+       ======================================== */
+
+    --border-width: 1px;
+    --border-width-thick: 2px;
+
+    --border-radius-sm: 0.25rem;
+    /* 4px */
+    --border-radius-md: 0.5rem;
+    /* 8px */
+    --border-radius-lg: 0.75rem;
+    /* 12px */
+    --border-radius-xl: 1rem;
+    /* 16px */
+    --border-radius-full: 9999px;
+    /* Círculo completo */
+
+    /* ========================================
+       SOMBRAS
+       ======================================== */
+
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* ========================================
+       TRANSICIONES Y ANIMACIONES
+       ======================================== */
+
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ========================================
+       Z-INDEX
+       ======================================== */
+
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+
+    /* ========================================
+       BREAKPOINTS (para uso en JS)
+       ======================================== */
+
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}

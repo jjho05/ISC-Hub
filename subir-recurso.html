@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Recurso - ISC-Hub</title>
+    <meta name="description" content="Comparte recursos educativos con la comunidad ISC">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <div id="header"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container" style="max-width: 800px;">
+                <!-- Page Header -->
+                <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+                    <h1
+                        style="font-size: var(--font-size-4xl); color: var(--primary-color); margin-bottom: var(--spacing-md);">
+                        Subir Recurso
+                    </h1>
+                    <p style="font-size: var(--font-size-lg); color: var(--text-secondary);">
+                        Comparte tus conocimientos con la comunidad ISC
+                    </p>
+                </div>
+
+                <!-- Upload Form -->
+                <div class="card" style="padding: var(--spacing-2xl);">
+                    <form id="uploadForm">
+                        <!-- Título -->
+                        <div style="margin-bottom: var(--spacing-xl);">
+                            <label for="titulo"
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                Título del Recurso *
+                            </label>
+                            <input type="text" id="titulo" name="titulo" placeholder="Ej: Apuntes de Programación Web"
+                                required
+                                style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                        </div>
+
+                        <!-- Descripción -->
+                        <div style="margin-bottom: var(--spacing-xl);">
+                            <label for="descripcion"
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                Descripción *
+                            </label>
+                            <textarea id="descripcion" name="descripcion" rows="4"
+                                placeholder="Describe el contenido del recurso, qué temas cubre, para qué es útil, etc."
+                                required
+                                style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md); resize: vertical;"></textarea>
+                        </div>
+
+                        <!-- Materia y Tipo de Contenido -->
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+                            <div>
+                                <label for="materia"
+                                    style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                    Materia *
+                                </label>
+                                <select id="materia" name="materia" required
+                                    style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    <option value="">Selecciona...</option>
+                                    <option value="programacion">Programación</option>
+                                    <option value="bases-datos">Bases de Datos</option>
+                                    <option value="redes">Redes</option>
+                                    <option value="arquitectura">Arquitectura de Computadoras</option>
+                                    <option value="inteligencia-artificial">Inteligencia Artificial</option>
+                                    <option value="ingenieria-software">Ingeniería de Software</option>
+                                    <option value="sistemas-operativos">Sistemas Operativos</option>
+                                    <option value="matematicas">Matemáticas</option>
+                                    <option value="otra">Otra</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="tipoContenido"
+                                    style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                    Tipo de Contenido *
+                                </label>
+                                <select id="tipoContenido" name="tipoContenido" required
+                                    style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    <option value="">Selecciona...</option>
+                                    <option value="apuntes">Apuntes</option>
+                                    <option value="proyectos">Proyecto</option>
+                                    <option value="ideas">Ideas</option>
+                                    <option value="codigos">Código</option>
+                                    <option value="tareas">Tarea</option>
+                                    <option value="examenes">Examen</option>
+                                    <option value="tutoriales">Tutorial</option>
+                                    <option value="otros">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Semestre y Profesor -->
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+                            <div>
+                                <label for="semestre"
+                                    style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                    Semestre *
+                                </label>
+                                <select id="semestre" name="semestre" required
+                                    style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    <option value="">Selecciona...</option>
+                                    <option value="1">1° Semestre</option>
+                                    <option value="2">2° Semestre</option>
+                                    <option value="3">3° Semestre</option>
+                                    <option value="4">4° Semestre</option>
+                                    <option value="5">5° Semestre</option>
+                                    <option value="6">6° Semestre</option>
+                                    <option value="7">7° Semestre</option>
+                                    <option value="8">8° Semestre</option>
+                                    <option value="9">9° Semestre</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="profesor"
+                                    style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                    Profesor (Opcional)
+                                </label>
+                                <input type="text" id="profesor" name="profesor" placeholder="Nombre del profesor"
+                                    style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div style="margin-bottom: var(--spacing-xl);">
+                            <label for="tags"
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                Etiquetas (Opcional)
+                            </label>
+                            <input type="text" id="tags" name="tags"
+                                placeholder="Ej: html, css, javascript (separadas por comas)"
+                                style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                            <small style="color: var(--text-muted); font-size: var(--font-size-sm);">
+                                Separa las etiquetas con comas
+                            </small>
+                        </div>
+
+                        <!-- Tipo de Recurso -->
+                        <div style="margin-bottom: var(--spacing-xl);">
+                            <label
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-md);">
+                                Tipo de Recurso *
+                            </label>
+                            <div style="display: flex; gap: var(--spacing-lg); flex-wrap: wrap;">
+                                <label
+                                    style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                    <input type="radio" name="tipoRecurso" value="archivo" checked>
+                                    <span>Archivo</span>
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                    <input type="radio" name="tipoRecurso" value="enlace">
+                                    <span>Enlace (YouTube, Drive, GitHub)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div id="archivoSection" style="margin-bottom: var(--spacing-xl);">
+                            <label for="archivo"
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                Archivo *
+                            </label>
+                            <div
+                                style="border: 2px dashed var(--border-color); border-radius: var(--border-radius-lg); padding: var(--spacing-2xl); text-align: center; background-color: var(--background-light);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2"
+                                    style="margin: 0 auto var(--spacing-md); color: var(--text-muted);">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                <input type="file" id="archivo" name="archivo"
+                                    accept=".pdf,.doc,.docx,.txt,.md,.jpg,.jpeg,.png,.gif,.mp4,.zip,.rar,.js,.py,.java,.cpp,.c,.html,.css"
+                                    style="display: none;">
+                                <label for="archivo" class="btn btn-outline" style="cursor: pointer;">
+                                    Seleccionar Archivo
+                                </label>
+                                <p id="fileName"
+                                    style="margin-top: var(--spacing-md); color: var(--text-secondary); font-size: var(--font-size-sm);">
+                                </p>
+                                <small style="display: block; margin-top: var(--spacing-sm); color: var(--text-muted);">
+                                    Formatos aceptados: PDF, DOCX, TXT, MD, JPG, PNG, GIF, MP4, ZIP, RAR, código fuente
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Link Input -->
+                        <div id="enlaceSection" style="margin-bottom: var(--spacing-xl); display: none;">
+                            <label for="enlace"
+                                style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                Enlace *
+                            </label>
+                            <input type="url" id="enlace" name="enlace"
+                                placeholder="https://youtube.com/... o https://github.com/... o https://drive.google.com/..."
+                                style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                            <small style="color: var(--text-muted); font-size: var(--font-size-sm);">
+                                Enlace a YouTube, Google Drive o GitHub
+                            </small>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div
+                            style="display: flex; gap: var(--spacing-md); justify-content: flex-end; margin-top: var(--spacing-2xl); padding-top: var(--spacing-xl); border-top: var(--border-width) solid var(--border-light);">
+                            <a href="recursos.html" class="btn btn-outline">
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Subir Recurso
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Info Alert -->
+                <div class="alert alert-info" style="margin-top: var(--spacing-xl);">
+                    <strong>Nota:</strong> Tu recurso será revisado por un administrador antes de ser publicado.
+                    Te notificaremos cuando sea aprobado.
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/components/header-loader.js"></script>
+    <script>
+        // Toggle between file and link upload
+        const tipoRecursoRadios = document.querySelectorAll('input[name="tipoRecurso"]');
+        const archivoSection = document.getElementById('archivoSection');
+        const enlaceSection = document.getElementById('enlaceSection');
+        const archivoInput = document.getElementById('archivo');
+        const enlaceInput = document.getElementById('enlace');
+
+        tipoRecursoRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'archivo') {
+                    archivoSection.style.display = 'block';
+                    enlaceSection.style.display = 'none';
+                    archivoInput.required = true;
+                    enlaceInput.required = false;
+                } else {
+                    archivoSection.style.display = 'none';
+                    enlaceSection.style.display = 'block';
+                    archivoInput.required = false;
+                    enlaceInput.required = true;
+                }
+            });
+        });
+
+        // File name display
+        archivoInput.addEventListener('change', function () {
+            const fileName = document.getElementById('fileName');
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const fileSize = (file.size / 1024 / 1024).toFixed(2); // MB
+                fileName.textContent = `${file.name} (${fileSize} MB)`;
+                fileName.style.color = 'var(--primary-color)';
+            } else {
+                fileName.textContent = '';
+            }
+        });
+
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const tipoRecurso = formData.get('tipoRecurso');
+
+            // TODO: Replace with actual Firebase upload
+            console.log('Upload form data:', {
+                titulo: formData.get('titulo'),
+                descripcion: formData.get('descripcion'),
+                materia: formData.get('materia'),
+                tipoContenido: formData.get('tipoContenido'),
+                semestre: formData.get('semestre'),
+                profesor: formData.get('profesor'),
+                tags: formData.get('tags'),
+                tipoRecurso: tipoRecurso,
+                archivo: tipoRecurso === 'archivo' ? formData.get('archivo') : null,
+                enlace: tipoRecurso === 'enlace' ? formData.get('enlace') : null
+            });
+
+            // Show success message
+            alert('¡Recurso enviado! Será revisado por un administrador antes de ser publicado.');
+
+            // Redirect to resources page
+            window.location.href = 'recursos.html';
+        });
+    </script>
+</body>
+
+</html>

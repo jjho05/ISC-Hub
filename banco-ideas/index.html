@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Banco de Ideas - ISC-Hub</title>
+    <meta name="description" content="Propón y adopta ideas de recursos educativos y proyectos colaborativos ISC.">
+    <link href="https://www.cdmadero.tecnm.mx/images/favicon.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="../css/variables.css" rel="stylesheet" />
+    <link href="../css/base.css" rel="stylesheet" />
+    <link href="../css/components.css" rel="stylesheet" />
+    <link href="css/banco-ideas.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-white text-[var(--text-primary)]">
+    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+        <div class="flex h-full grow flex-col">
+            <!-- Header -->
+            <div id="header-container"></div>
+
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-white py-16">
+                <div class="container mx-auto px-4 sm:px-10">
+                    <h1 class="text-4xl sm:text-5xl font-bold mb-4">Banco de Ideas</h1>
+                    <p class="text-xl mb-8">Propón ideas de proyectos basados en necesidades reales y colabora con la
+                        comunidad ISC</p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="enviar-idea.html"
+                            class="bg-white text-[var(--primary-color)] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            📝 Proponer Idea
+                        </a>
+                        <a href="mis-ideas.html"
+                            class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition">
+                            📋 Mis Ideas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="bg-gray-50 border-b border-gray-200 py-6">
+                <div class="container mx-auto px-4 sm:px-10">
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <div class="flex-1 min-w-[200px]">
+                            <input type="search" id="searchInput" placeholder="🔍 Buscar ideas..."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent">
+                        </div>
+                        <select id="filterEstado"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]">
+                            <option value="">Todos los estados</option>
+                            <option value="disponible">🟢 Disponible</option>
+                            <option value="en-desarrollo">🔵 En Desarrollo</option>
+                            <option value="completada">✅ Completada</option>
+                            <option value="abandonada">⚫ Abandonada</option>
+                        </select>
+                        <select id="filterDestino"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]">
+                            <option value="">Todos los destinos</option>
+                            <option value="innovatec">Innovatec</option>
+                            <option value="expociencias">Expociencias</option>
+                            <option value="gps">GPS</option>
+                            <option value="otro">Otro evento</option>
+                            <option value="practica">Práctica personal</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ideas Grid -->
+            <main class="flex-1 py-10">
+                <div class="container mx-auto px-4 sm:px-10">
+                    <div id="ideasGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Ideas will be loaded here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="text-center py-20 hidden">
+                        <svg class="mx-auto h-24 w-24 text-gray-400" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                        <h3 class="mt-4 text-xl font-semibold text-gray-600">No se encontraron ideas</h3>
+                        <p class="mt-2 text-gray-500">Intenta ajustar los filtros o sé el primero en proponer una idea
+                        </p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="loadingState" class="text-center py-20">
+                        <div
+                            class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--primary-color)]">
+                        </div>
+                        <p class="mt-4 text-gray-600">Cargando ideas...</p>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <div id="footer-container"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/banco-ideas.js"></script>
+    <script>
+        // Load header and footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-container').innerHTML = html;
+            });
+
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-container').innerHTML = html;
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin - Banco de Ideas</title>
+    <link href="https://www.cdmadero.tecnm.mx/images/favicon.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <link href="../css/banco-ideas.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+
+    <main class="py-10">
+        <div class="container mx-auto px-4 sm:px-10">
+            <div class="mb-8">
+                <a href="../index.html" class="text-[var(--primary-color)] hover:underline">← Volver al Banco de
+                    Ideas</a>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Panel de Administración</h1>
+                <p class="text-gray-600">Gestiona las ideas propuestas por los usuarios</p>
+            </div>
+
+            <!-- Navegación Admin -->
+            <div class="bg-white rounded-lg shadow-md mb-6">
+                <div class="flex flex-wrap border-b border-gray-200">
+                    <a href="dashboard.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-[var(--primary-color)] text-[var(--primary-color)]">
+                        📊 Dashboard
+                    </a>
+                    <a href="revisar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        ✅ Revisar Ideas
+                    </a>
+                    <a href="gestionar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        ⚙️ Gestionar Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Ideas</p>
+                            <p class="text-3xl font-bold text-[var(--primary-color)]">24</p>
+                        </div>
+                        <div class="text-4xl">💡</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Pendientes</p>
+                            <p class="text-3xl font-bold text-yellow-600">5</p>
+                        </div>
+                        <div class="text-4xl">🟡</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Disponibles</p>
+                            <p class="text-3xl font-bold text-green-600">12</p>
+                        </div>
+                        <div class="text-4xl">🟢</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">En Desarrollo</p>
+                            <p class="text-3xl font-bold text-blue-600">7</p>
+                        </div>
+                        <div class="text-4xl">🔵</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ideas Recientes -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-bold mb-4">Ideas Pendientes de Revisión</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Control de Asistencia Biométrico</h3>
+                            <p class="text-sm text-gray-600">Por María González • Hace 2 horas</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Aprobar</button>
+                            <button
+                                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Rechazar</button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="flex-1">
+                            <h3 class="font-semibold">App de Delivery Local</h3>
+                            <p class="text-sm text-gray-600">Por Carlos Ramírez • Hace 5 horas</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Aprobar</button>
+                            <button
+                                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Rechazar</button>
+                        </div>
+                    </div>
+                </div>
+                <a href="revisar-ideas.html"
+                    class="block text-center mt-4 text-[var(--primary-color)] hover:underline">Ver todas las ideas
+                    pendientes →</a>
+            </div>
+
+            <!-- Actividad Reciente -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4">Actividad Reciente</h2>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 pb-3 border-b border-gray-200">
+                        <div class="text-2xl">✅</div>
+                        <div class="flex-1">
+                            <p class="font-semibold">Idea aprobada</p>
+                            <p class="text-sm text-gray-600">"Sistema de Inventario para Miscelánea" fue aprobada</p>
+                            <p class="text-xs text-gray-500">Hace 1 hora</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 pb-3 border-b border-gray-200">
+                        <div class="text-2xl">🔵</div>
+                        <div class="flex-1">
+                            <p class="font-semibold">Idea adoptada</p>
+                            <p class="text-sm text-gray-600">"App de Citas Médicas" fue adoptada por un equipo</p>
+                            <p class="text-xs text-gray-500">Hace 3 horas</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 pb-3 border-b border-gray-200">
+                        <div class="text-2xl">📝</div>
+                        <div class="flex-1">
+                            <p class="font-semibold">Nueva idea propuesta</p>
+                            <p class="text-sm text-gray-600">"Plataforma de Tutorías" enviada por Luis Hernández</p>
+                            <p class="text-xs text-gray-500">Hace 6 horas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        fetch('../../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
+    </script>
+</body>
+
+</html>

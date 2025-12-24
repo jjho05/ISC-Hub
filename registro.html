@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - ISC-Hub</title>
+    <meta name="description" content="Regístrate en ISC-Hub para compartir y acceder a recursos educativos de ISC">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: var(--spacing-lg);
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-2xl);
+            max-width: 550px;
+            width: 100%;
+            padding: var(--spacing-3xl);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .auth-logo {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .auth-logo img {
+            height: 50px;
+        }
+
+        .auth-header h1 {
+            color: var(--primary-color);
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .auth-header p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .form-group label {
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: var(--spacing-md);
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(27, 57, 106, 0.1);
+        }
+
+        .form-group small {
+            color: var(--text-muted);
+            font-size: var(--font-size-xs);
+        }
+
+        .form-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: var(--border-width) solid var(--border-light);
+        }
+
+        .form-footer a {
+            color: var(--primary-color);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: white;
+            text-decoration: none;
+            margin-bottom: var(--spacing-lg);
+            font-weight: var(--font-weight-medium);
+            transition: opacity var(--transition-fast);
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+            text-decoration: none;
+        }
+
+        .error-message,
+        .success-message {
+            display: none;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-sm);
+        }
+
+        .error-message {
+            background-color: var(--error-light);
+            color: var(--error-color);
+        }
+
+        .success-message {
+            background-color: var(--success-light);
+            color: var(--success-color);
+        }
+
+        .error-message.show,
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div style="max-width: 550px; width: 100%;">
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Volver al inicio
+            </a>
+
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <img src="https://www.cdcuauhtemoc.tecnm.mx/wp-content/uploads/2021/08/Logo-TecNM.png"
+                            alt="TecNM">
+                        <img src="https://www.cdmadero.tecnm.mx/images/logo-itcm-v2.png" alt="ITCM">
+                    </div>
+                    <h1>Crear Cuenta</h1>
+                    <p>Únete a la comunidad ISC-Hub</p>
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+
+                <form class="auth-form" id="registerForm">
+                    <!-- Nombre Completo -->
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez García" required>
+                    </div>
+
+                    <!-- Correo Institucional y Personal -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="correoInstitucional">Correo Institucional *</label>
+                            <input type="email" id="correoInstitucional" name="correoInstitucional"
+                                placeholder="alumno@cdmadero.tecnm.mx" required>
+                            <small>Para verificación</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="correoPersonal">Correo Personal *</label>
+                            <input type="email" id="correoPersonal" name="correoPersonal"
+                                placeholder="tu.correo@gmail.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Número de Control y Rol -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="numeroControl">Número de Control *</label>
+                            <input type="text" id="numeroControl" name="numeroControl" placeholder="19070123"
+                                pattern="[0-9]{8}" maxlength="8" required>
+                            <small>8 dígitos</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rol">Rol *</label>
+                            <select id="rol" name="rol" required>
+                                <option value="">Selecciona...</option>
+                                <option value="alumno">Alumno</option>
+                                <option value="docente">Docente</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Contraseña y Confirmación -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Contraseña *</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••" minlength="6"
+                                required>
+                            <small>Mínimo 6 caracteres</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Contraseña *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••"
+                                minlength="6" required>
+                        </div>
+                    </div>
+
+                    <!-- Términos y Condiciones -->
+                    <div style="margin-top: var(--spacing-sm);">
+                        <label style="display: flex; align-items: start; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" id="terms" name="terms" required style="margin-top: 4px;">
+                            <span style="font-size: var(--font-size-sm); color: var(--text-secondary);">
+                                Acepto los términos y condiciones de uso de ISC-Hub y entiendo que mi cuenta
+                                será revisada por un administrador antes de ser aprobada.
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                            Crear Cuenta
+                        </button>
+                    </div>
+                </form>
+
+                <div class="form-footer">
+                    <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
+                        ¿Ya tienes una cuenta?
+                    </p>
+                    <a href="login.html">Inicia sesión aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Registration form handler (placeholder - will be replaced with Firebase)
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const nombre = document.getElementById('nombre').value;
+            const correoInstitucional = document.getElementById('correoInstitucional').value;
+            const correoPersonal = document.getElementById('correoPersonal').value;
+            const numeroControl = document.getElementById('numeroControl').value;
+            const rol = document.getElementById('rol').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                showError('Las contraseñas no coinciden');
+                return;
+            }
+
+            // Validate institutional email
+            if (!correoInstitucional.includes('@cdmadero.tecnm.mx')) {
+                showError('El correo institucional debe ser del dominio @cdmadero.tecnm.mx');
+                return;
+            }
+
+            // TODO: Replace with actual Firebase registration
+            console.log('Registration attempt:', {
+                nombre,
+                correoInstitucional,
+                correoPersonal,
+                numeroControl,
+                rol,
+                password
+            });
+
+            // Show success message
+            showSuccess('¡Registro exitoso! Tu cuenta está pendiente de aprobación por un administrador. Te notificaremos por correo cuando sea aprobada.');
+
+            // Clear form
+            document.getElementById('registerForm').reset();
+
+            // Redirect to login after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 3000);
+        });
+
+        // Show error message function
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+
+            successDiv.classList.remove('show');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+
+            setTimeout(() => {
+                errorDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        // Show success message function
+        function showSuccess(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+
+            errorDiv.classList.remove('show');
+            successDiv.textContent = message;
+            successDiv.classList.add('show');
+        }
+
+        // Real-time password match validation
+        document.getElementById('confirmPassword').addEventListener('input', function () {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+
+            if (confirmPassword && password !== confirmPassword) {
+                this.setCustomValidity('Las contraseñas no coinciden');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    </script>
+</body>
+
+</html>

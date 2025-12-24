@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gestionar Ideas - Admin</title>
+    <link href="https://www.cdmadero.tecnm.mx/images/favicon.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <link href="../css/banco-ideas.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+
+    <main class="py-10">
+        <div class="container mx-auto px-4 sm:px-10">
+            <div class="mb-8">
+                <a href="../index.html" class="text-[var(--primary-color)] hover:underline">← Volver al Banco de
+                    Ideas</a>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Gestionar Todas las Ideas</h1>
+                <p class="text-gray-600">Administra el estado y configuración de todas las ideas</p>
+            </div>
+
+            <!-- Navegación Admin -->
+            <div class="bg-white rounded-lg shadow-md mb-6">
+                <div class="flex flex-wrap border-b border-gray-200">
+                    <a href="dashboard.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        📊 Dashboard
+                    </a>
+                    <a href="revisar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        ✅ Revisar Ideas
+                    </a>
+                    <a href="gestionar-ideas.html"
+                        class="px-6 py-4 font-semibold border-b-2 border-[var(--primary-color)] text-[var(--primary-color)]">
+                        ⚙️ Gestionar Ideas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                <div class="flex gap-4 flex-wrap">
+                    <select id="filterEstado" class="px-4 py-2 border border-gray-300 rounded-lg">
+                        <option value="">Todos los estados</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="en-desarrollo">En Desarrollo</option>
+                        <option value="completada">Completada</option>
+                        <option value="abandonada">Abandonada</option>
+                        <option value="rechazada">Rechazada</option>
+                    </select>
+                    <input type="search" placeholder="Buscar por título o autor..."
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg">
+                </div>
+            </div>
+
+            <!-- Configuración de Abandono -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-bold mb-4">⚙️ Configuración</h2>
+                <div class="flex items-center gap-4">
+                    <label class="font-semibold">Marcar como abandonada después de:</label>
+                    <select id="tiempoAbandono" class="px-4 py-2 border border-gray-300 rounded-lg">
+                        <option value="1">1 mes sin actualizaciones</option>
+                        <option value="2">2 meses sin actualizaciones</option>
+                        <option value="3" selected>3 meses sin actualizaciones</option>
+                        <option value="4">4 meses sin actualizaciones</option>
+                        <option value="6">6 meses sin actualizaciones</option>
+                    </select>
+                    <button onclick="guardarConfig()"
+                        class="px-6 py-2 bg-[var(--primary-color)] text-white rounded-lg hover:bg-[var(--secondary-color)]">Guardar</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Ideas -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Título</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Autor</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Estado</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Fecha</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4">Sistema de Inventario</td>
+                            <td class="px-6 py-4">Juan Pérez</td>
+                            <td class="px-6 py-4"><span class="estado-badge estado-disponible">🟢 Disponible</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">15/01/2025</td>
+                            <td class="px-6 py-4">
+                                <button onclick="cambiarEstado(1)" class="text-blue-600 hover:underline mr-3">Cambiar
+                                    Estado</button>
+                                <button onclick="eliminarIdea(1)" class="text-red-600 hover:underline">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4">App de Citas Médicas</td>
+                            <td class="px-6 py-4">María González</td>
+                            <td class="px-6 py-4"><span class="estado-badge estado-en-desarrollo">🔵 En
+                                    Desarrollo</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">10/01/2025</td>
+                            <td class="px-6 py-4">
+                                <button onclick="cambiarEstado(2)" class="text-blue-600 hover:underline mr-3">Cambiar
+                                    Estado</button>
+                                <button onclick="eliminarIdea(2)" class="text-red-600 hover:underline">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4">Plataforma de Tutorías</td>
+                            <td class="px-6 py-4">Luis Hernández</td>
+                            <td class="px-6 py-4"><span class="estado-badge estado-completada">✅ Completada</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">01/12/2024</td>
+                            <td class="px-6 py-4">
+                                <button onclick="cambiarEstado(3)" class="text-blue-600 hover:underline mr-3">Cambiar
+                                    Estado</button>
+                                <button onclick="eliminarIdea(3)" class="text-red-600 hover:underline">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4">Control de Asistencia</td>
+                            <td class="px-6 py-4">Pedro Martínez</td>
+                            <td class="px-6 py-4"><span class="estado-badge estado-abandonada">⚫ Abandonada</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">15/11/2024</td>
+                            <td class="px-6 py-4">
+                                <button onclick="cambiarEstado(4)" class="text-blue-600 hover:underline mr-3">Cambiar
+                                    Estado</button>
+                                <button onclick="eliminarIdea(4)" class="text-red-600 hover:underline">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <!-- Modal Cambiar Estado -->
+    <div id="modalEstado" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Cambiar Estado de Idea</h2>
+                <button onclick="cerrarModal()" class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="formEstado">
+                    <label class="block font-semibold mb-2">Nuevo Estado:</label>
+                    <select id="nuevoEstado" required class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4">
+                        <option value="pendiente">🟡 Pendiente</option>
+                        <option value="disponible">🟢 Disponible</option>
+                        <option value="en-desarrollo">🔵 En Desarrollo</option>
+                        <option value="completada">✅ Completada</option>
+                        <option value="abandonada">⚫ Abandonada</option>
+                        <option value="rechazada">🔴 Rechazada</option>
+                    </select>
+                    <div class="flex gap-3">
+                        <button type="submit"
+                            class="flex-1 bg-[var(--primary-color)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--secondary-color)]">Guardar</button>
+                        <button type="button" onclick="cerrarModal()"
+                            class="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('../../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
+
+        let ideaActual = null;
+
+        function cambiarEstado(id) {
+            ideaActual = id;
+            document.getElementById('modalEstado').classList.add('show');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalEstado').classList.remove('show');
+            ideaActual = null;
+        }
+
+        function eliminarIdea(id) {
+            if (confirm('¿Eliminar esta idea permanentemente?')) {
+                alert('Idea eliminada');
+                location.reload();
+            }
+        }
+
+        function guardarConfig() {
+            const tiempo = document.getElementById('tiempoAbandono').value;
+            alert(`✅ Configuración guardada\n\nLas ideas se marcarán como abandonadas después de ${tiempo} meses sin actualizaciones.`);
+        }
+
+        document.getElementById('formEstado').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const estado = document.getElementById('nuevoEstado').value;
+            alert(`✅ Estado actualizado a: ${estado}`);
+            cerrarModal();
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>

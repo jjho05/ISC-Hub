@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - ISC-Hub</title>
+    <link rel="icon" href="https://www.cdmadero.tecnm.mx/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div id="header"></div>
+        <main class="main-content">
+            <div class="container" style="max-width: 1000px;">
+                <h1 style="margin-bottom: var(--spacing-2xl); color: var(--primary-color);">Mi Perfil</h1>
+
+                <div class="layout-with-sidebar">
+                    <!-- Main Content -->
+                    <div>
+                        <!-- Profile Info Card -->
+                        <div class="card" style="margin-bottom: var(--spacing-xl);">
+                            <div style="display: flex; gap: var(--spacing-xl); align-items: start;">
+                                <div
+                                    style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-size-5xl); font-weight: var(--font-weight-bold);">
+                                    JH
+                                </div>
+                                <div style="flex: 1;">
+                                    <h2 style="margin-bottom: var(--spacing-sm);">Jesús Javier Hernández Olvera</h2>
+                                    <div
+                                        style="display: flex; gap: var(--spacing-lg); margin-bottom: var(--spacing-md); flex-wrap: wrap;">
+                                        <span class="badge badge-primary">Alumno</span>
+                                        <span style="color: var(--text-secondary);">📧
+                                            jesus.hernandez@cdmadero.tecnm.mx</span>
+                                        <span style="color: var(--text-secondary);">🔢 19070123</span>
+                                    </div>
+                                    <p style="color: var(--text-secondary);">Miembro desde: 15 de enero de 2025</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit Profile Form -->
+                        <div class="card">
+                            <h3 style="margin-bottom: var(--spacing-lg);">Editar Información</h3>
+                            <form id="profileForm">
+                                <div
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
+                                    <div>
+                                        <label
+                                            style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                            Nombre Completo
+                                        </label>
+                                        <input type="text" value="Jesús Javier Hernández Olvera"
+                                            style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    </div>
+                                    <div>
+                                        <label
+                                            style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                            Correo Personal
+                                        </label>
+                                        <input type="email" value="jesus.personal@gmail.com"
+                                            style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md);">
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: var(--spacing-lg);">
+                                    <label
+                                        style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--spacing-sm);">
+                                        Biografía (Opcional)
+                                    </label>
+                                    <textarea rows="3" placeholder="Cuéntanos sobre ti..."
+                                        style="width: 100%; padding: var(--spacing-md); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-md); resize: vertical;"></textarea>
+                                </div>
+
+                                <div style="display: flex; gap: var(--spacing-md); justify-content: flex-end;">
+                                    <button type="button" class="btn btn-outline">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <!-- Stats Card -->
+                        <div class="card" style="margin-bottom: var(--spacing-lg);">
+                            <h3 style="margin-bottom: var(--spacing-lg);">Estadísticas</h3>
+                            <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                                <div>
+                                    <div
+                                        style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--primary-color);">
+                                        23</div>
+                                    <div style="color: var(--text-secondary); font-size: var(--font-size-sm);">Recursos
+                                        Subidos</div>
+                                </div>
+                                <div>
+                                    <div
+                                        style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--success-color);">
+                                        156</div>
+                                    <div style="color: var(--text-secondary); font-size: var(--font-size-sm);">Descargas
+                                        Totales</div>
+                                </div>
+                                <div>
+                                    <div
+                                        style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--warning-color);">
+                                        4.7</div>
+                                    <div style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                                        Calificación Promedio</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="card">
+                            <h3 style="margin-bottom: var(--spacing-md);">Acciones Rápidas</h3>
+                            <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                                <a href="subir-recurso.html" class="btn btn-primary" style="width: 100%;">
+                                    📤 Subir Recurso
+                                </a>
+                                <a href="recursos.html" class="btn btn-outline" style="width: 100%;">
+                                    📚 Ver Mis Recursos
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+                <!-- My Resources Section -->
+                <div class="card" style="margin-top: var(--spacing-2xl);">
+                    <h3 style="margin-bottom: var(--spacing-lg);">Mis Recursos Recientes</h3>
+                    <div class="grid grid-cols-3">
+                        <!-- Sample resource cards -->
+                        <div class="card resource-card">
+                            <div class="resource-card-thumbnail">
+                                <div
+                                    style="background-color: var(--primary-color); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">
+                                    📄
+                                </div>
+                            </div>
+                            <div class="resource-card-content">
+                                <h3 class="resource-card-title">Apuntes de Programación Web</h3>
+                                <p class="resource-card-description">Apuntes completos del curso...</p>
+                                <div class="resource-card-meta">
+                                    <span class="badge badge-primary">Programación</span>
+                                    <span class="badge badge-secondary">Apuntes</span>
+                                </div>
+                                <div class="resource-card-footer">
+                                    <div class="resource-card-stats">
+                                        <div class="resource-card-stat">📥 45</div>
+                                        <div class="resource-card-stat">⭐ 4.5</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="js/components/header-loader.js"></script>
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Perfil actualizado exitosamente');
+        });
+    </script>
+</body>
+
+</html>

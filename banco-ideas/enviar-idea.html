@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Enviar Idea - ISC ITCM</title>
+    <link href="https://www.cdmadero.tecnm.mx/images/favicon.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="css/banco-ideas.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+
+    <main class="py-10">
+        <div class="container mx-auto px-4 sm:px-10 max-w-4xl">
+            <div class="mb-8">
+                <a href="index.html" class="text-[var(--primary-color)] hover:underline">← Volver al Banco de Ideas</a>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Proponer Nueva Idea</h1>
+                <p class="text-gray-600">Completa el protocolo para enviar tu idea. Será revisada por un administrador
+                    antes de publicarse.</p>
+            </div>
+
+            <form id="ideaForm" action="https://formsubmit.co/PON_TU_EMAIL_ADMIN_AQUI" method="POST"
+                class="bg-white rounded-lg shadow-md p-8 space-y-6">
+                <!-- Campos ocultos de FormSubmit -->
+                <input type="hidden" name="_subject" value="Nueva Idea Propuesta - Banco de Ideas ISC">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <!-- Email del autor (para notificaciones) -->
+                <div>
+                    <label class="block font-semibold mb-2">Tu Correo Electrónico *</label>
+                    <input type="email" name="email_autor" id="emailAutor" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="tu.correo@cdmadero.tecnm.mx">
+                    <p class="text-sm text-gray-500 mt-1">Para notificarte sobre el estado de tu idea</p>
+                </div>
+
+                <!-- Nombre del autor -->
+                <div>
+                    <label class="block font-semibold mb-2">Tu Nombre Completo *</label>
+                    <input type="text" name="nombre_autor" id="nombreAutor" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="Nombre completo">
+                </div>
+
+                <!-- Título -->
+                <div>
+                    <label class="block font-semibold mb-2">Título de la Idea *</label>
+                    <input type="text" name="titulo" id="titulo" required maxlength="100"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="Ej: Sistema de Inventario para Miscelánea">
+                    <p class="text-sm text-gray-500 mt-1">Máximo 100 caracteres</p>
+                </div>
+
+                <!-- Antecedentes -->
+                <div>
+                    <label class="block font-semibold mb-2">Antecedentes (Contexto y Justificación) *</label>
+                    <textarea name="antecedentes" id="antecedentes" required rows="4"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="Describe el contexto de tu idea, por qué es importante y qué te motivó a proponerla..."></textarea>
+                </div>
+
+                <!-- Problema Detectado -->
+                <div>
+                    <label class="block font-semibold mb-2">Problema Detectado *</label>
+                    <textarea name="problema" id="problema" required rows="4"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="Describe claramente la necesidad real detectada (ej: sistema de inventario para la miscelánea de un tío, app para gestionar citas en una empresa familiar, etc.)"></textarea>
+                </div>
+
+                <!-- Objetivo General -->
+                <div>
+                    <label class="block font-semibold mb-2">Objetivo General *</label>
+                    <textarea name="objetivo_general" id="objetivoGeneral" required rows="3"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent"
+                        placeholder="¿Qué se pretende lograr con este proyecto?"></textarea>
+                </div>
+
+                <!-- Objetivos Específicos -->
+                <div>
+                    <label class="block font-semibold mb-2">Objetivos Específicos *</label>
+                    <div id="objetivosContainer" class="space-y-2">
+                        <div class="flex gap-2">
+                            <input type="text"
+                                class="objetivo-input flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]"
+                                placeholder="Objetivo específico 1" required>
+                            <button type="button" onclick="agregarObjetivo()"
+                                class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pasos Propuestos -->
+                <div>
+                    <label class="block font-semibold mb-2">Pasos Propuestos para Realizar la Idea *</label>
+                    <div id="pasosContainer" class="space-y-2">
+                        <div class="flex gap-2">
+                            <input type="text"
+                                class="paso-input flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]"
+                                placeholder="Paso 1" required>
+                            <button type="button" onclick="agregarPaso()"
+                                class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cronograma -->
+                <div>
+                    <label class="block font-semibold mb-2">Cronograma de Actividades *</label>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse border border-gray-300">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="border border-gray-300 px-4 py-2">Actividad</th>
+                                    <th class="border border-gray-300 px-4 py-2">Fecha Inicio</th>
+                                    <th class="border border-gray-300 px-4 py-2">Fecha Fin</th>
+                                    <th class="border border-gray-300 px-4 py-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cronogramaBody">
+                                <tr>
+                                    <td class="border border-gray-300 px-2 py-2">
+                                        <input type="text"
+                                            class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]"
+                                            placeholder="Nombre de la actividad" required>
+                                    </td>
+                                    <td class="border border-gray-300 px-2 py-2">
+                                        <input type="date"
+                                            class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]"
+                                            required>
+                                    </td>
+                                    <td class="border border-gray-300 px-2 py-2">
+                                        <input type="date"
+                                            class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]"
+                                            required>
+                                    </td>
+                                    <td class="border border-gray-300 px-2 py-2 text-center">
+                                        <button type="button" onclick="agregarActividad()"
+                                            class="text-green-500 hover:text-green-700 font-bold">+</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Habilidades Necesarias -->
+                <div>
+                    <label class="block font-semibold mb-2">Habilidades/Temas Necesarios (Opcional)</label>
+                    <input type="text" name="habilidades" id="habilidades"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]"
+                        placeholder="Ej: JavaScript, Python, Base de datos, etc. (separados por comas)">
+                </div>
+
+                <!-- Destino del Proyecto -->
+                <div>
+                    <label class="block font-semibold mb-2">Destino del Proyecto (Opcional)</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="destino" value="innovatec"
+                                class="rounded text-[var(--primary-color)] focus:ring-[var(--primary-color)]">
+                            <span>Innovatec</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="destino" value="expociencias"
+                                class="rounded text-[var(--primary-color)] focus:ring-[var(--primary-color)]">
+                            <span>Expociencias</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="destino" value="gps"
+                                class="rounded text-[var(--primary-color)] focus:ring-[var(--primary-color)]">
+                            <span>GPS (Gestión de Proyectos de Software)</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="destino" value="otro"
+                                class="rounded text-[var(--primary-color)] focus:ring-[var(--primary-color)]">
+                            <span>Otro evento</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" name="destino" value="practica"
+                                class="rounded text-[var(--primary-color)] focus:ring-[var(--primary-color)]">
+                            <span>Práctica personal</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Adjuntos -->
+                <div>
+                    <label class="block font-semibold mb-2">Adjuntos (Opcional)</label>
+                    <input type="file" id="adjuntos" multiple accept="image/*,.pdf,.doc,.docx"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]">
+                    <p class="text-sm text-gray-500 mt-1">Puedes adjuntar imágenes, documentos o enlaces relacionados
+                    </p>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex gap-4 pt-4">
+                    <button type="submit"
+                        class="flex-1 bg-[var(--primary-color)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--secondary-color)] transition">
+                        📤 Enviar Idea
+                    </button>
+                    <a href="index.html"
+                        class="flex-1 text-center bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
+                        Cancelar
+                    </a>
+                </div>
+
+                <p class="text-sm text-gray-500 text-center">
+                    * Campos obligatorios. Tu idea será revisada por un administrador antes de publicarse.
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="js/enviar-idea.js"></script>
+    <script>
+        fetch('../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
+
+        function agregarObjetivo() {
+            const container = document.getElementById('objetivosContainer');
+            const div = document.createElement('div');
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <input type="text" class="objetivo-input flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Objetivo específico ${container.children.length + 1}">
+                <button type="button" onclick="this.parentElement.remove()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">-</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function agregarPaso() {
+            const container = document.getElementById('pasosContainer');
+            const div = document.createElement('div');
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <input type="text" class="paso-input flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Paso ${container.children.length + 1}">
+                <button type="button" onclick="this.parentElement.remove()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">-</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function agregarActividad() {
+            const tbody = document.getElementById('cronogramaBody');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="border border-gray-300 px-2 py-2">
+                    <input type="text" class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Nombre de la actividad">
+                </td>
+                <td class="border border-gray-300 px-2 py-2">
+                    <input type="date" class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]">
+                </td>
+                <td class="border border-gray-300 px-2 py-2">
+                    <input type="date" class="w-full px-2 py-1 border-0 focus:ring-2 focus:ring-[var(--primary-color)]">
+                </td>
+                <td class="border border-gray-300 px-2 py-2 text-center">
+                    <button type="button" onclick="this.closest('tr').remove()" class="text-red-500 hover:text-red-700 font-bold">-</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        }
+    </script>
+</body>
+
+</html>
