@@ -196,30 +196,6 @@
 
     <div id="footer-container"></div>
 
-    <script src="js/fix-header-links.js"></script>
-    <script>
-        fetch('../components/header.html').then(r => r.text()).then(h => {
-            document.getElementById('header-container').innerHTML = h;
-            fixHeaderLinks(1);
-        });
-        fetch('../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
-
-        function adoptarIdea() {
-            document.getElementById('modalAdoptar').classList.add('show');
-        }
-
-        function cerrarModal() {
-            document.getElementById('modalAdoptar').classList.remove('show');
-        }
-
-        document.getElementById('formAdoptar').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('✅ ¡Idea adoptada exitosamente!\\n\\nAhora puedes comenzar a trabajar en ella. No olvides subir actualizaciones periódicas.');
-            cerrarModal();
-            window.location.href = 'mis-ideas.html';
-        });
-    </script>
-
     <!-- Modal Adoptar Idea -->
     <div id="modalAdoptar" class="modal">
         <div class="modal-content max-w-2xl">
@@ -257,6 +233,25 @@
         </div>
     </div>
 
+    <script>
+        fetch('../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
+
+        function adoptarIdea() {
+            document.getElementById('modalAdoptar').classList.add('show');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalAdoptar').classList.remove('show');
+        }
+
+        document.getElementById('formAdoptar').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('✅ ¡Idea adoptada exitosamente!\n\nAhora puedes comenzar a trabajar en ella. No olvides subir actualizaciones periódicas.');
+            cerrarModal();
+            window.location.href = 'mis-ideas.html';
+        });
+    </script>
 </body>
 
 </html>
