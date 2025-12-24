@@ -1,80 +1,130 @@
-<header
-    class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[var(--accent-color)] bg-white/80 px-4 py-4 sm:px-10">
-    <a href="index.html" class="flex items-center gap-4 transition-opacity hover:opacity-80"><svg
-            class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg">
-            <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor"
-                fill-rule="evenodd"></path>
-        </svg>
-        <h2 class="text-lg sm:text-xl font-bold leading-tight tracking-[-0.015em] text-[var(--secondary-color)]">
-            Ingeniería en <br class="hidden sm:block" />Sistemas Computacionales</h2>
-    </a>
-    <div class="flex items-center gap-4">
-        <nav class="hidden items-center gap-8 md:flex">
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="index.html" data-page="index">Inicio</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="nosotros.html" data-page="nosotros">Nosotros</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="plan-de-estudios.html" data-page="plan-de-estudios">Plan de Estudios</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="perfil-aspirante.html" data-page="perfil-aspirante">Perfil Aspirante</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="https://www.cdmadero.tecnm.mx/index.php/admision/convocatoria-licenciatura" target="_blank"
-                rel="noopener noreferrer">Admisiones</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="https://jjho05.github.io/ISC-Hub/" target="_blank" rel="noopener noreferrer">ISC-Hub</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="https://jjho05.github.io/ISC-ITCM-CURSOS/" target="_blank" rel="noopener noreferrer">Cursos</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="banco-ideas/index.html" data-page="banco-ideas">Banco de Ideas</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="contacto.html" data-page="contacto">Contacto</a>
-            <a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-                href="egresados.html" data-page="egresados">Egresados</a>
+<!-- Header Component -->
+<header class="header">
+    <div class="container header-container">
+        <!-- Logo -->
+        <a href="index.html" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="currentColor" />
+                <path d="M8 10h16M8 16h16M8 22h16" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>ISC-Hub</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="header-nav">
+            <ul class="header-nav-links">
+                <li><a href="index.html" class="header-nav-link">Inicio</a></li>
+                <li><a href="subir-recurso.html" class="header-nav-link">Subir Recurso</a></li>
+                <li><a href="banco-ideas/index.html" class="header-nav-link">Banco de Ideas</a></li>
+                <li><a href="#" class="header-nav-link">Mis Recursos</a></li>
+            </ul>
+
+            <!-- Search Bar -->
+            <div class="header-search">
+                <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="search" class="header-search-input" placeholder="Buscar recursos...">
+            </div>
         </nav>
-        <a href="https://www.cdmadero.tecnm.mx/" target="_blank" rel="noopener noreferrer"
-            class="hidden md:block transition-transform hover:scale-105"><img
-                src="https://www.cdmadero.tecnm.mx/images/logo-itcm-v2.png" alt="Logo del TecNM"
-                class="h-12 w-auto"></a>
-        <div class="md:hidden"><button id="menu-btn" type="button"
-                class="text-[var(--secondary-color)] transition-transform hover:scale-110 focus:outline-none"><svg
-                    id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
-                    </path>
-                </svg><svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg></button></div>
+
+        <!-- Actions -->
+        <div class="header-actions">
+            <button class="btn btn-primary" onclick="window.location.href='subir-recurso.html'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Subir
+            </button>
+
+            <!-- User Menu -->
+            <div class="dropdown header-user" id="userDropdown">
+                <div class="header-user-avatar" id="userAvatar">U</div>
+                <div class="dropdown-menu" id="userMenu">
+                    <a href="perfil.html" class="dropdown-item">Mi Perfil</a>
+                    <a href="recursos.html?mis-recursos=true" class="dropdown-item">Mis Recursos</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="admin/dashboard.html" class="dropdown-item" id="adminLink" style="display: none;">Panel
+                        Admin</a>
+                    <div class="dropdown-divider" id="adminDivider" style="display: none;"></div>
+                    <a href="#" class="dropdown-item" id="logoutBtn">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </button>
     </div>
 </header>
-<div id="mobile-menu" class="hidden md:hidden fixed top-[80px] left-0 right-0 bottom-0 bg-white z-40">
-    <nav class="flex flex-col items-center justify-center h-full gap-8">
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="index.html" data-page-mobile="index">Inicio</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="nosotros.html" data-page-mobile="nosotros">Nosotros</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="plan-de-estudios.html" data-page-mobile="plan-de-estudios">Plan de Estudios</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="perfil-aspirante.html" data-page-mobile="perfil-aspirante">Perfil Aspirante</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="https://www.cdmadero.tecnm.mx/index.php/admision/convocatoria-licenciatura" target="_blank"
-            rel="noopener noreferrer">Admisiones</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="https://jjho05.github.io/ISC-Hub/" target="_blank" rel="noopener noreferrer">ISC-Hub</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="https://jjho05.github.io/ISC-ITCM-CURSOS/" target="_blank" rel="noopener noreferrer">Cursos</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="banco-ideas/index.html" data-page-mobile="banco-ideas">Banco de Ideas</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="contacto.html" data-page-mobile="contacto">Contacto</a>
-        <a class="text-2xl font-bold text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]"
-            href="egresados.html" data-page-mobile="egresados">Egresados</a>
-        <a href="https://www.cdmadero.tecnm.mx/" target="_blank" rel="noopener noreferrer"
-            class="mt-8 transition-transform hover:scale-105"><img
-                src="https://www.cdmadero.tecnm.mx/images/logo-itcm-v2.png" alt="Logo del TecNM"
-                class="h-16 w-auto"></a>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <a href="index.html" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="currentColor" />
+                <path d="M8 10h16M8 16h16M8 22h16" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>ISC-Hub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="mobile-menu-nav">
+        <a href="index.html" class="mobile-menu-link">Inicio</a>
+        <a href="recursos.html" class="mobile-menu-link">Recursos</a>
+        <a href="subir-recurso.html" class="mobile-menu-link">Subir Recurso</a>
+        <a href="banco-ideas/index.html" class="mobile-menu-link">Banco de Ideas</a>
+        <a href="perfil.html" class="mobile-menu-link">Mi Perfil</a>
+        <a href="admin/dashboard.html" class="mobile-menu-link" id="adminLinkMobile" style="display: none;">Panel
+            Admin</a>
+        <a href="#" class="mobile-menu-link" id="logoutBtnMobile">Cerrar Sesión</a>
     </nav>
 </div>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuToggle?.addEventListener('click', () => {
+        mobileMenu.classList.add('show');
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+    });
+
+    // User dropdown toggle
+    const userDropdown = document.getElementById('userDropdown');
+    const userMenu = document.getElementById('userMenu');
+
+    userDropdown?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        userMenu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        userMenu?.classList.remove('show');
+    });
+
+    // Search functionality (placeholder)
+    const searchInput = document.querySelector('.header-search-input');
+    searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        // TODO: Implement search functionality
+        console.log('Searching for:', query);
+    });
+</script>
