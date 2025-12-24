@@ -224,9 +224,13 @@
 
     <div id="footer-container"></div>
 
+    <script src="js/fix-header-links.js"></script>
     <script src="js/enviar-idea.js"></script>
     <script>
-        fetch('../components/header.html').then(r => r.text()).then(h => document.getElementById('header-container').innerHTML = h);
+        fetch('../components/header.html').then(r => r.text()).then(h => {
+            document.getElementById('header-container').innerHTML = h;
+            fixHeaderLinks(1);
+        });
         fetch('../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-container').innerHTML = h);
 
         function agregarObjetivo() {
