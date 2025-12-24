@@ -1,0 +1,80 @@
+/**
+ /* ========================================
+   VARIABLES CSS - TecNM Oficial
+   ======================================== */
+:root {
+    /* Colores Oficiales TecNM - Manual de Identidad 2025 */
+    --tecnm-blue: #1B396A;
+    /* Pantone 294 C - Azul oficial */
+    --tecnm-gray: #807F83;
+    /* Cool Gray 10 C */
+    --tecnm-black: #000000;
+    /* Negro 100% */
+    --tecnm-silver: #ABABAB;
+    /* Pantone 877 C */
+
+    /* Aplicación de colores */
+    --primary-color: #1B396A;
+    /* Azul oficial TecNM */
+    --secondary-color: #14305C;
+    /* Azul oscuro oficial TecNM (variante más oscura del primario) */
+    --accent-color: #f0f2f4;
+    /* Gris claro */
+    --text-primary: #000000;
+    /* Negro oficial */
+    --text-secondary: #807F83;
+    /* Gris oficial */
+    --background-color: #ffffff;
+    --border-color: #dce0e5;
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* ========================================
+   ESTILOS BASE - Tipografía Oficial TecNM
+   ======================================== */
+body {
+    font-family: "Noto Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+/* Placeholders para componentes - evita "saltos" durante la carga */
+#header-placeholder {
+    min-height: 80px;
+}
+
+#footer-placeholder {
+    min-height: 200px;
+}
+
+/* Mejora de transiciones para navegación */
+header nav a {
+    transition: color 0.2s ease-in-out;
+}
+
+#mobile-menu a {
+    transition: color 0.2s ease-in-out;
+}
+
+/* Backdrop blur para header sticky */
+header.sticky {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
